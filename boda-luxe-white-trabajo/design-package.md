@@ -62,10 +62,14 @@ Un solo plano continuo, sin cortes, sin personas. Se descarta cualquier transfor
 - **El movimiento:** grúa lenta hacia abajo combinada con un retroceso suave. Empieza cerca de la corona y la cascada, y termina a la altura del suelo con la vista más ancha. La cascada queda centrada y se desliza hacia arriba por el encuadre.
 - **El brillo:** destellos prismáticos suaves recorren los cristales al cambiar la luz. No hay roce con la lente, porque la cámara se aleja.
 - **La vida del plano:** los cristales oscilan y brillan muy poco, las microluces titilan, las telas respiran, la luz se mueve sobre el suelo brillante.
-- **El fotograma final (reposo):** altura de ojos, al borde de la pista vacía. La corona y la araña quedan en el tercio superior, centradas. El suelo blanco brillante llena la mitad inferior y es la zona calma donde vive el texto del cierre. Mesas redondas y muros de cristal se alejan suaves al fondo.
+- **El fotograma final (reposo):** plano general a la altura de los ojos, desde el extremo cercano de la pista. La corona y la araña quedan pequeñas y centradas en la mitad de arriba, completas, sin recortar. El suelo blanco brillante llena la mitad inferior y lleva al fondo hasta una tarta blanca de varios pisos sobre un pedestal blanco, centrada bajo la araña. Mesas redondas a los lados y muros de cristal con jardín al fondo. La mitad inferior es la zona calma donde vive el texto del cierre.
 - **Dónde vive el texto:** durante el descenso, el carril central es la acción y las palabras van a izquierda y derecha. Al final, el texto va sobre el suelo blanco, en el centro inferior.
 
 Los prompts exactos para Flow están en `prompts-flow.md`.
+
+**Fluidez del scroll.** La suavidad depende de cuántos fotogramas hay por cada tramo de scroll, no de lo largo que sea el scroll. Con un clip de 8 segundos a 24 fps hay unos 190 fotogramas repartidos en unos 4500px (hero de 600vh en una pantalla de 900px de alto): una imagen nueva cada 23px. Alargar el scroll lo empeora, porque cada fotograma dura más píxeles. En el procesado el video se convierte a 60 fps con interpolación de fotogramas (ffmpeg), unos 480 fotogramas y una imagen nueva cada 9px. Se prueba con el video real y se compara a ojo. Si los hilos finos de la araña salen con fantasmas, no se aplica y se busca otra solución. El recorrido grande de cámara (la araña pasa de llenar el alto a ocupar un tercio) es lo que justifica los 600vh. Si el recorrido sale corto, se encadena una segunda toma.
+
+**Imágenes fijas.** La imagen 2 (`raw/imagen-2-final-v1.jpg`) se usa como `hero-ending.jpg`: es el hero del móvil y la imagen de la sección "El lugar". El final del video es el plano general nuevo.
 
 ## 5. Mapa de bandas del hero
 
