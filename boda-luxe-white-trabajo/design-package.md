@@ -59,8 +59,8 @@ Un solo plano continuo, sin cortes, sin personas. Se descarta cualquier transfor
 
 **Capítulo único: El descenso.**
 - **El mundo:** carpa de cristal blanca. Corona de flores blancas suspendida en lo alto, con una cascada cilíndrica de cristal cayendo por el centro. Telas de seda drapeadas con microluces cálidas. Muros de cristal con follaje verde plata desaturado al fondo. Pista blanca impecable.
-- **El movimiento:** grúa lenta hacia abajo (de la altura del techo a la altura del suelo). La cascada queda centrada y se desliza hacia arriba por el encuadre. Empuje casi imperceptible hacia dentro.
-- **El cruce:** a media bajada, los hilos de cristal exteriores pasan cerca de la lente: destellos suaves, un instante de desenfoque con bokeh, y se despeja.
+- **El movimiento:** grúa lenta hacia abajo combinada con un retroceso suave. Empieza cerca de la corona y la cascada, y termina a la altura del suelo con la vista más ancha. La cascada queda centrada y se desliza hacia arriba por el encuadre.
+- **El brillo:** destellos prismáticos suaves recorren los cristales al cambiar la luz. No hay roce con la lente, porque la cámara se aleja.
 - **La vida del plano:** los cristales oscilan y brillan muy poco, las microluces titilan, las telas respiran, la luz se mueve sobre el suelo brillante.
 - **El fotograma final (reposo):** altura de ojos, al borde de la pista vacía. La corona y la araña quedan en el tercio superior, centradas. El suelo blanco brillante llena la mitad inferior y es la zona calma donde vive el texto del cierre. Mesas redondas y muros de cristal se alejan suaves al fondo.
 - **Dónde vive el texto:** durante el descenso, el carril central es la acción y las palabras van a izquierda y derecha. Al final, el texto va sobre el suelo blanco, en el centro inferior.
@@ -145,6 +145,16 @@ Todo desemboca en un único botón: Confirmar asistencia.
 - Éxito, si no viene: "Te echaremos de menos, {nombre}." y "Gracias por avisarnos. Si algo cambia, aquí seguimos." con el botón "Cambiar mi respuesta"
 
 **A dónde va el formulario.** Es una web estática, sin servidor. El modo por defecto es `demo`: el formulario muestra su mensaje de éxito y la respuesta no llega a nadie. Está pensado para la plantilla de muestra. Para una boda real el bloque `WEDDING` admite tres modos más: `mailto` (se abre el correo del invitado ya dirigido a la pareja), `endpoint` (el formulario envía a un servicio gratuito de formularios, como Formspree, y las respuestas llegan al correo de la pareja) y `whatsapp` (se abre un mensaje ya escrito). El mensaje de éxito siempre dice la verdad sobre lo que ocurrió.
+
+**Textos pequeños (se añadieron al construir)**
+- Dudas, titular: "Antes de venir." Debajo: "¿Falta algo? Escríbenos por WhatsApp."
+- Señal de scroll del hero: "Desliza"
+- Enlace de accesibilidad: "Saltar al contenido"
+- Formulario, mientras envía: "Enviando..."
+- Formulario, si falla el envío: "No pudimos enviar tu respuesta. Inténtalo otra vez o escríbenos por WhatsApp."
+- Nota de éxito en modo demo: "Esto es una plantilla de muestra: tu respuesta no se envió a nadie."
+- Nota de éxito en modo correo: "Se abrió tu correo. Pulsa enviar para que nos llegue."
+- Nota de éxito en modo WhatsApp: "Se abrió WhatsApp. Pulsa enviar para que nos llegue."
 
 **Pie de página**
 - Monograma "V & A"
