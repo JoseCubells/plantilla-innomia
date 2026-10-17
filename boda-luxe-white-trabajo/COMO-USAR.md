@@ -30,7 +30,23 @@ La página espera cuatro archivos en `boda-luxe-white/assets/`:
 - `hero-ending.jpg`: su último fotograma. Es el hero de los móviles y la imagen de las vistas previas al compartir el enlace.
 - `lugar.jpg`: la imagen de la sección "El lugar".
 
-Los comandos de ffmpeg para prepararlos están en `references/ffmpeg-recipes.md`.
+### Cómo se procesó el video
+
+El video que sale de Flow (1920x1080, 24 fps) se procesó en dos pasos. Con esos mismos pasos se procesa el de otra boda.
+
+1. Recortar las franjas negras que trae (4px arriba y abajo) y convertir a 60 fps interpolando fotogramas. Tarda unos 7 minutos y es un paso aparte para no repetirlo si se prueban varios ajustes de calidad:
+
+```
+ffmpeg -i video-flow.mp4 -vf "crop=1920:1072:0:4,minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" -an -c:v libx264 -crf 12 -preset fast -pix_fmt yuv420p intermedio60.mp4
+```
+
+2. Codificar para scroll, con un fotograma clave cada 6 fotogramas (cada salto del video cuesta menos de decodificar) y `faststart`:
+
+```
+ffmpeg -i intermedio60.mp4 -c:v libx264 -crf 23 -preset slow -g 6 -keyint_min 6 -pix_fmt yuv420p -movflags +faststart -an boda-luxe-white/assets/hero-scrub.mp4
+```
+
+Después hay que escribir el peso exacto del archivo en bytes en la constante `VIDEO_BYTES` de `index.html`. El póster y el fotograma final se sacan del original con `ffmpeg -ss 0 -i video-flow.mp4 -frames:v 1 -vf "crop=1920:1072:0:4" -q:v 2 hero-poster.jpg` y la misma orden con `-sseof -0.05 -update 1` para el último. Los demás comandos están en `references/ffmpeg-recipes.md`.
 
 ## Ver la web en tu ordenador
 

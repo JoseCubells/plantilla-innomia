@@ -126,8 +126,8 @@ footer{position:relative;z-index:1}
 @keyframes nudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 /* hero estático */
 .hero-static{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;gap:16px;padding:0 var(--gut) clamp(56px,13vh,120px);z-index:2;color:var(--text-primary);text-shadow:var(--tshadow)}
-.hero-static::before{content:"";position:absolute;inset:30% 0 0 0;z-index:-1;background:linear-gradient(to top,rgba(243,241,236,.9) 0%,rgba(243,241,236,.66) 45%,rgba(243,241,236,0) 100%)}
-.hero-static h1{font-size:clamp(46px,13vw,92px);line-height:.95}
+.hero-static::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(243,241,236,.92) 0%,rgba(243,241,236,.72) 50%,rgba(243,241,236,0) 100%)}
+.hero-static h1{font-size:clamp(40px,min(13vw,14vh),92px);line-height:.95}
 .hero-static p{text-wrap:balance}
 .hero-static .btn{margin-top:10px}
 @media (max-width: 720px), (orientation: portrait) and (max-width: 1024px), (orientation: portrait) and (pointer: coarse), (orientation: landscape) and (pointer: coarse) and (max-height: 560px), (prefers-reduced-motion: reduce){
@@ -137,6 +137,7 @@ footer{position:relative;z-index:1}
   .hero-static{display:flex}
 }
 @media (max-height:560px){.cue{display:none}}
+@media (orientation: landscape) and (max-height:560px){.hero{min-height:0}.hero-static{gap:8px;padding-bottom:clamp(18px,6vh,40px)}.hero-static .btn{margin-top:2px;padding:12px 24px}}
 
 /* ===== secciones ===== */
 .sec{position:relative;padding-block:clamp(96px,16vh,184px)}
@@ -598,7 +599,7 @@ function setEnvLit(n){
 /* ---- el hero: scrub controlado por el scroll ---- */
 const hero=$('#inicio'), stage=$('#stage'), video=$('#hero'), posterEl=$('#poster'), cue=$('#cue');
 const ring=$('.ring circle',cue);
-const VIDEO_URL='assets/hero-scrub.mp4', VIDEO_BYTES=0;
+const VIDEO_URL='assets/hero-scrub.mp4', VIDEO_BYTES=11070612;
 const POSTER_URL='assets/hero-poster.jpg', ENDING_URL='assets/hero-ending.jpg';
 const GATES=[
   '(max-width: 720px)',
