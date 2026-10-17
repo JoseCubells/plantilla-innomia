@@ -23,11 +23,12 @@ En el mismo bloque, `rsvp.mode`:
 
 ## Las imágenes y el video
 
-La página espera tres archivos en `boda-luxe-white/assets/`:
+La página espera cuatro archivos en `boda-luxe-white/assets/`:
 
-- `hero-scrub.mp4`: el video del descenso, recodificado para scroll.
+- `hero-scrub.mp4`: el video del descenso, recodificado para scroll (sin audio, a 60 fps, con un fotograma clave cada pocos fotogramas).
 - `hero-poster.jpg`: su primer fotograma.
-- `hero-ending.jpg`: su último fotograma. Es el hero de los móviles y la imagen de la sección "El lugar".
+- `hero-ending.jpg`: su último fotograma. Es el hero de los móviles y la imagen de las vistas previas al compartir el enlace.
+- `lugar.jpg`: la imagen de la sección "El lugar".
 
 Los comandos de ffmpeg para prepararlos están en `references/ffmpeg-recipes.md`.
 

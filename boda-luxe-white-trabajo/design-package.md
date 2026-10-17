@@ -69,7 +69,9 @@ Los prompts exactos para Flow están en `prompts-flow.md`.
 
 **Fluidez del scroll.** La suavidad depende de cuántos fotogramas hay por cada tramo de scroll, no de lo largo que sea el scroll. Con un clip de 8 segundos a 24 fps hay unos 190 fotogramas repartidos en unos 4500px (hero de 600vh en una pantalla de 900px de alto): una imagen nueva cada 23px. Alargar el scroll lo empeora, porque cada fotograma dura más píxeles. En el procesado el video se convierte a 60 fps con interpolación de fotogramas (ffmpeg), unos 480 fotogramas y una imagen nueva cada 9px. Se prueba con el video real y se compara a ojo. Si los hilos finos de la araña salen con fantasmas, no se aplica y se busca otra solución. El recorrido grande de cámara (la araña pasa de llenar el alto a ocupar un tercio) es lo que justifica los 600vh. Si el recorrido sale corto, se encadena una segunda toma.
 
-**Imágenes fijas.** La imagen 2 (`raw/imagen-2-final-v1.jpg`) se usa como `hero-ending.jpg`: es el hero del móvil y la imagen de la sección "El lugar". El final del video es el plano general nuevo.
+**Imágenes fijas.** El hero del móvil usa el último fotograma del video (`hero-ending.jpg`). La sección "El lugar" usa la imagen 2 (`raw/imagen-2-final-v1.jpg`, la corona y la araña de cerca) como `lugar.jpg`, para que no repita el plano con el que acaba el hero.
+
+**Decisión sobre el video (v1, aprobado).** El video que salió de Flow (`raw/video-flow-v1.mp4`, 1920x1080, 24 fps, 8 segundos) se aparta del guion en un punto: la corona y la araña de cristal salen por arriba hacia los 3 segundos y el plano final es un plano general de la sala, con una araña dorada pequeña arriba, la tarta al fondo centrada y la pista blanca llenando la mitad inferior. Se aprueba así. Trae 4px de franja negra arriba y abajo, que se recortan (queda 1920x1072).
 
 ## 5. Mapa de bandas del hero
 

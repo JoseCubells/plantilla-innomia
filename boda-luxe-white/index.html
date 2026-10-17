@@ -93,13 +93,13 @@ footer{position:relative;z-index:1}
 .bands{position:absolute;inset:0;pointer-events:none}
 .band{position:absolute;opacity:0;isolation:isolate;--k:0;text-shadow:var(--tshadow);color:var(--text-primary)}
 .band.off{visibility:hidden}
-.band::before{content:"";position:absolute;inset:-22% -16%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 74% 62% at 50% 50%,rgba(243,241,236,.72) 0%,rgba(243,241,236,.5) 46%,rgba(243,241,236,0) 76%)}
+.band::before{content:"";position:absolute;inset:-50% -40%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse closest-side at 50% 50%,rgba(243,241,236,.86) 0%,rgba(243,241,236,.76) 56%,rgba(243,241,236,0) 100%)}
 .band .btn{pointer-events:auto}
 .b1{left:var(--gut);top:50%;transform:translateY(-50%);width:min(36vw,560px)}
 .b1 h1{font-size:clamp(52px,6.6vw,112px);line-height:.94}
 .b1 .kicker{margin-bottom:22px;color:var(--text-primary);opacity:clamp(0,var(--k,0)*3,1)}
-.b2{right:var(--gut);top:50%;transform:translateY(-50%);width:min(32vw,470px)}
-.b3{left:var(--gut);top:50%;transform:translateY(-50%);width:min(32vw,470px)}
+.b2{right:var(--gut);top:37%;transform:translateY(-50%);width:min(32vw,470px)}
+.b3{left:var(--gut);top:35%;transform:translateY(-50%);width:min(32vw,470px)}
 .b2 h2,.b3 h2{font-size:clamp(36px,4.3vw,70px)}
 .band .sub{margin-top:22px;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:var(--text-primary);opacity:var(--ks,0);--ks:clamp(0,(var(--k,0) - .45)*2.6,1);transform:translateY(calc((1 - var(--ks))*10px))}
 .b4{left:50%;bottom:10vh;transform:translateX(-50%);width:min(780px,92vw);text-align:center}
@@ -406,7 +406,7 @@ footer.foot{padding:clamp(64px,10vh,110px) var(--gut) 48px;text-align:center}
   </section>
 
   <section class="venue" id="lugar" aria-labelledby="h-lugar">
-    <div class="venue-img" id="venueImg"><img id="venuePic" alt="La Carpa de Cristal vista desde el borde de la pista de baile, con la araña de cristal y la corona de flores en lo alto" width="1920" height="1080" loading="lazy" decoding="async"></div>
+    <div class="venue-img" id="venueImg"><img id="venuePic" alt="La corona de flores blancas y la araña de cristal de la Carpa de Cristal, sobre las mesas y la pista blanca" width="1920" height="1071" loading="lazy" decoding="async"></div>
     <div class="venue-card rv">
       <p class="mono lab rv-i">03 · El lugar</p>
       <h2 class="display rv-i" id="h-lugar">La Carpa de Cristal, en la <span data-w="place">Finca Los Almendros</span>.</h2>
@@ -735,7 +735,7 @@ updateCaptions(heroProgress());
 /* ---- imagen del lugar (el fotograma final) ---- */
 const vp=$('#venuePic');
 vp.addEventListener('error',()=>{vp.style.display='none'});
-vp.src=ENDING_URL;
+vp.src='assets/lugar.jpg';
 
 /* ---- entradas por IntersectionObserver ---- */
 $$('.rv').forEach(c=>$$('.rv-i',c).forEach((k,i)=>k.style.setProperty('--d',(i*.09).toFixed(2)+'s')));
