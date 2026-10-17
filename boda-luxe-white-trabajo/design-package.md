@@ -45,6 +45,8 @@ Dirección: blanco porcelana, marfil, cristal, un verde plata apagado del follaj
 
 Como el mundo es blanco, el sistema de legibilidad del skill se invierte: texto en tinta oscura sobre velos claros, y la auditoría del peor fotograma busca el píxel MÁS OSCURO bajo el texto, no el más claro.
 
+El velo no es un óvalo: un óvalo claro se ve como una mancha pálida sobre las telas cálidas. Es una bruma anclada al borde de la pantalla del lado de la frase, difuminada hacia el centro, arriba y abajo, y con el tono de las propias telas (casi un gris cálido claro, `--mist`), más una sombra clara pegada a las letras. No tiene ningún contorno cerrado. La auditoría mide con las letras transparentes y la sombra puesta.
+
 ## 3. Tipografía
 
 - **Display:** Bodoni Moda, 400 y 400 cursiva. Para nombres, titulares y cifras grandes. Alto contraste de alta costura.
