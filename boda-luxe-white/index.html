@@ -73,7 +73,7 @@ main{position:relative;z-index:1}
 footer{position:relative;z-index:1}
 
 /* ===== navegación ===== */
-.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px var(--gut)}
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) var(--gut) 14px}
 .nav .chip{background:rgba(250,248,244,.66);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(111,123,110,.28);border-radius:999px}
 .nav .mark{font:400 20px/1 var(--f-display);padding:11px 20px;text-decoration:none;letter-spacing:.02em}
 .nav .links{display:flex;gap:6px;padding:6px}
@@ -413,7 +413,7 @@ footer.foot{padding:clamp(64px,10vh,110px) var(--gut) 48px;text-align:center}
       <h2 class="display rv-i" id="h-lugar">La Carpa de Cristal, en la <span data-w="place">Finca Los Almendros</span>.</h2>
       <p class="t rv-i">A treinta y cinco minutos de la ciudad, entre almendros y caminos de grava blanca.</p>
       <p class="mono addr rv-i" data-w="address">Camino de los Almendros, s/n</p>
-      <div class="rv-i"><a class="btn btn-ghost" href="#" data-href="mapUrl" target="_blank" rel="noopener">Cómo llegar</a></div>
+      <div class="rv-i"><a class="btn btn-ghost" href="#" data-href="mapUrl">Cómo llegar</a></div>
     </div>
     <dl class="wrap facts rv">
       <div class="rv-i"><dt class="mono">Aparcamiento</dt><dd>Gratis en la finca. Hay personal que te indica dónde dejar el coche.</dd></div>
@@ -434,7 +434,7 @@ footer.foot{padding:clamp(64px,10vh,110px) var(--gut) 48px;text-align:center}
         <div class="acc-i rv-i"><h3><button class="acc-b" type="button" aria-expanded="false" aria-controls="p2" id="b2"><span>¿Puedo llevar a mis hijos?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="acc-p" id="p2" role="region" aria-labelledby="b2"><div><p>Es una noche de adultos. Habrá una sala con cuidadoras para los más pequeños hasta las 22:00. Cuéntanos cuántos son al confirmar.</p></div></div></div>
         <div class="acc-i rv-i"><h3><button class="acc-b" type="button" aria-expanded="false" aria-controls="p3" id="b3"><span>¿Puedo cambiar mi respuesta?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="acc-p" id="p3" role="region" aria-labelledby="b3"><div><p>Sí, las veces que haga falta hasta el <span data-w="deadlineShort">1 de mayo</span>. Vuelve a esta página y usa Cambiar mi respuesta.</p></div></div></div>
         <div class="acc-i rv-i"><h3><button class="acc-b" type="button" aria-expanded="false" aria-controls="p4" id="b4"><span>Tengo una alergia o una dieta especial.</span><span class="pm" aria-hidden="true"></span></button></h3><div class="acc-p" id="p4" role="region" aria-labelledby="b4"><div><p>Escríbela al confirmar. El menú tiene opción vegetariana, sin gluten y sin lactosa, y la cocina lo prepara aparte.</p></div></div></div>
-        <div class="acc-i rv-i"><h3><button class="acc-b" type="button" aria-expanded="false" aria-controls="p5" id="b5"><span>¿Qué regalo puedo hacer?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="acc-p" id="p5" role="region" aria-labelledby="b5"><div><p>Que vengas ya es el regalo. Si quieres añadir algo, hay una mesa pequeña de regalos. <a href="#" data-href="giftUrl" target="_blank" rel="noopener">Ver la mesa de regalos</a></p></div></div></div>
+        <div class="acc-i rv-i"><h3><button class="acc-b" type="button" aria-expanded="false" aria-controls="p5" id="b5"><span>¿Qué regalo puedo hacer?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="acc-p" id="p5" role="region" aria-labelledby="b5"><div><p>Que vengas ya es el regalo. Si quieres añadir algo, hay una mesa pequeña de regalos. <a href="#" data-href="giftUrl">Ver la mesa de regalos</a></p></div></div></div>
         <div class="acc-i rv-i"><h3><button class="acc-b" type="button" aria-expanded="false" aria-controls="p6" id="b6"><span>¿Hasta cuándo puedo confirmar?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="acc-p" id="p6" role="region" aria-labelledby="b6"><div><p>Hasta el <span data-w="deadline">1 de mayo de 2027</span>. Si se te pasa, escríbenos por WhatsApp.</p></div></div></div>
       </div>
     </div>
@@ -526,9 +526,11 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ---- datos de la plantilla en la página ---- */
 $$('[data-w]').forEach(el=>{const v=WEDDING[el.dataset.w];if(v!=null)el.textContent=v});
-$$('[data-href]').forEach(a=>{const v=WEDDING[a.dataset.href];if(v)a.href=v});
+$$('[data-href]').forEach(a=>{const v=WEDDING[a.dataset.href];if(v&&v!=='#'){a.href=v;a.target='_blank';a.rel='noopener'}});
 const waNum=(WEDDING.rsvp.whatsappNumber||'').replace(/\D/g,'');
 $$('[data-wa]').forEach(a=>{if(waNum){a.href='https://wa.me/'+waNum;a.target='_blank';a.rel='noopener'}});
+/* enlaces que aun no tienen destino real: no hacen nada en lugar de saltar al inicio */
+$$('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
 
 /* ---- texto dividido, una sola vez, con semilla fija ---- */
 function splitText(el,mode,seed){
@@ -625,7 +627,12 @@ video.addEventListener('seeked',()=>{
   seekBusy=false;
   if(pendingTime!==null){const t=pendingTime;pendingTime=null;requestSeek(t)}
 });
-video.addEventListener('error',()=>{seekBusy=false;pendingTime=null;failVideo()});
+let triedDirect=false;
+video.addEventListener('error',()=>{
+  seekBusy=false;pendingTime=null;
+  if(!triedDirect&&heroBlobUrl&&video.getAttribute('src')===heroBlobUrl){triedDirect=true;video.src=VIDEO_URL;video.load();video.addEventListener('canplay',()=>{requestSeek(heroProgress()*video.duration);stage.classList.add('video-ready')},{once:true});return}
+  failVideo();
+});
 
 function updateCaptions(p){
   bands.forEach(B=>{
