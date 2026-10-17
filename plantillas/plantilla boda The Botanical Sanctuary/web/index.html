@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es" class="static">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clara &amp; Mateo · 19 de junio de 2027</title>
+<meta name="description" content="Nos casamos el 19 de junio de 2027 en la Finca El Olivar, Aranjuez. Itinerario, cómo llegar, dónde dormir y confirmación de asistencia.">
+<meta name="theme-color" content="#141A1C">
+<!-- DEPLOY STEP: sustituir por la URL pública absoluta antes de publicar -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clara &amp; Mateo · 19 de junio de 2027">
+<meta property="og:description" content="Un sendero de piedra, una mesa infinita y cientos de velas. Te esperamos.">
+<meta property="og:url" content="https://EJEMPLO.com/">
+<meta property="og:image" content="https://EJEMPLO.com/assets/img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141A1C'/%3E%3Cpath d='M18 50C26 36 36 24 48 14' stroke='%23C9A39A' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cellipse cx='27' cy='34' rx='4' ry='11' transform='rotate(-48 27 34)' fill='%238E9C88'/%3E%3Cellipse cx='37' cy='24' rx='4' ry='11' transform='rotate(40 37 24)' fill='%238E9C88'/%3E%3Cellipse cx='41' cy='31' rx='3.5' ry='9' transform='rotate(-50 41 31)' fill='%23ECE5D8'/%3E%3C/svg%3E">
+
+<script>
+/* ===== Configuración de la plantilla =====
+   Todo lo que esté en null usa la escena dibujada. Ver PROMPTS.md, apartado 5. */
+window.SANCTUARY = {
+  video: null,               // 'assets/video/hero-scrub.mp4'
+  videoBytes: 0,             // peso exacto en bytes del vídeo
+  stills: [null, null, null, null],          // ['assets/img/ch1.jpg', 'assets/img/ch2.jpg', 'assets/img/ch3.jpg', 'assets/img/ch4.jpg']
+  stillsPortrait: [null, null, null, null],  // versiones 9:16 para móvil (opcional)
+  details: [null, null, null],               // ['assets/img/detalle-copa.jpg', 'assets/img/detalle-ceramica.jpg', 'assets/img/detalle-menu.jpg']
+  chapterTimes: [0, .25, .5, .75, 1],        // fracción del vídeo donde empieza cada segmento
+  weddingDate: '2027-06-19T17:30:00+02:00',
+  rsvpEndpoint: null,        // p. ej. 'https://formspree.io/f/XXXXXXX' (recibe los envíos en tu correo)
+  rsvpEmail: null            // alternativa: 'novios@ejemplo.com' (abre el correo del invitado)
+};
+/* Las cinco puertas del hero estático. Única fuente de verdad: el CSS sigue a html.scrub / html.static. */
+window.SANCTUARY_GATES = [
+  '(max-width: 720px)',
+  '(orientation: portrait) and (max-width: 1024px)',
+  '(orientation: portrait) and (pointer: coarse)',
+  '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
+  '(prefers-reduced-motion: reduce)'
+];
+(function () {
+  var s = window.SANCTUARY_GATES.some(function (q) { return matchMedia(q).matches; });
+  var c = document.documentElement.classList;
+  c.add('js'); c.toggle('scrub', !s); c.toggle('static', s);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=DM+Mono&family=IM+Fell+English:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/css/sanctuary.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="env" aria-hidden="true"><i class="env-light"></i></div>
+
+<header class="nav" id="nav">
+  <a class="mono-mark" href="#inicio" aria-label="Inicio, Clara y Mateo">C<span>&amp;</span>M</a>
+  <nav aria-label="Secciones">
+    <ul>
+      <li><a href="#itinerario">El día</a></li>
+      <li><a href="#lugar">Cómo llegar</a></li>
+      <li><a href="#alojamiento">Dormir</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-sm" href="#rsvp" data-rsvp-link>Confirmar</a>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- ================= HERO: cuatro láminas ================= -->
+  <section class="hero" id="inicio" aria-label="La boda, en cuatro láminas">
+    <div class="stage" id="stage">
+      <div class="scene" aria-hidden="true">
+        <div class="proc" id="proc"></div>
+        <div class="stills" id="stills"></div>
+        <video id="hero" class="hero-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+        <div class="dusk"></div>
+        <canvas class="motes" id="motes"></canvas>
+        <div class="candles" id="candles"></div>
+        <div class="leaves" id="leaves"></div>
+        <div class="scrim"></div>
+        <div class="vignette"></div>
+      </div>
+
+      <div class="chapters">
+        <!-- Lámina I -->
+        <article class="chapter" data-ch="0" aria-labelledby="t-umbral">
+          <div class="chapter-bg" aria-hidden="true"></div>
+          <div class="band b-names fx-rise" data-range="0,0.11">
+            <p class="plate"><span>Lámina I</span> · El umbral · <em>Olea europaea</em></p>
+            <h1 id="t-umbral" class="names" data-split="words">Clara &amp; Mateo</h1>
+            <p class="sub">Nos casamos el 19 de junio de 2027 · Finca El Olivar, Aranjuez</p>
+          </div>
+          <div class="band b-path fx-breeze" data-range="0.125,0.24" data-spread="0.5">
+            <p class="lead" data-split="chars" data-spread="0.34">Un sendero de piedra antigua, olivos a los lados.</p>
+            <p class="lead lead-2" data-split="chars" data-spread="0.22" data-delay="0.32">Al final, te esperamos nosotros.</p>
+          </div>
+        </article>
+
+        <!-- Lámina II -->
+        <article class="chapter" data-ch="1" aria-labelledby="t-mesa">
+          <div class="chapter-bg" aria-hidden="true"></div>
+          <div class="band b-table fx-snap" data-range="0.255,0.37" data-spread="0.45">
+            <p class="plate"><span>Lámina II</span> · La mesa imperial · <em>Eucalyptus cinerea</em></p>
+            <h2 id="t-mesa" class="display" data-split="chars">Una sola mesa. Todos bajo la misma luz.</h2>
+          </div>
+          <div class="band b-cards fx-glass" data-range="0.38,0.545" data-ramp="0.05" id="itinerario">
+            <div class="glass card-day" style="--th:0">
+              <p class="card-k">El día · 19.06.2027</p>
+              <h3 class="card-t">El día</h3>
+              <ol class="timeline">
+                <li class="it" style="--th:.12"><time>17:30</time><span>Ceremonia bajo el arco</span></li>
+                <li class="it" style="--th:.2"><time>18:30</time><span>Cóctel entre los olivos</span></li>
+                <li class="it" style="--th:.28"><time>21:00</time><span>Cena en la mesa imperial</span></li>
+                <li class="it" style="--th:.36"><time>23:30</time><span>La velada: velas, música y baile</span></li>
+                <li class="it" style="--th:.44"><time>03:00</time><span>Último autobús a Madrid</span></li>
+              </ol>
+              <i class="tl-line" aria-hidden="true"></i>
+            </div>
+            <div class="glass card-dress" style="--th:.16">
+              <p class="card-k">Código de vestimenta</p>
+              <h3 class="card-t">Etiqueta de jardín</h3>
+              <p class="it" style="--th:.3">Tonos de la finca: lino, salvia, oliva, arena y rosa empolvado.</p>
+              <ul class="swatches" aria-hidden="true">
+                <li style="--c:#E6DCCB;--th:.34"></li><li style="--c:#9AA894;--th:.38"></li><li style="--c:#6B7452;--th:.42"></li><li style="--c:#CDB894;--th:.46"></li><li style="--c:#D2A9A0;--th:.5"></li>
+              </ul>
+              <ul class="notes">
+                <li class="it" style="--th:.5">Tacón ancho o plano: el suelo es de piedra.</li>
+                <li class="it" style="--th:.56">Una capa para la noche, que en el campo refresca.</li>
+                <li class="it" style="--th:.6">El blanco y el marfil, mejor para nosotros.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Lámina III -->
+        <article class="chapter" data-ch="2" aria-labelledby="t-altar">
+          <div class="chapter-bg" aria-hidden="true"></div>
+          <div class="band b-altar fx-shadow" data-range="0.555,0.67" data-ramp="0.035">
+            <p class="plate"><span>Lámina III</span> · El altar · <em>Rosa 'Café au lait'</em></p>
+            <h2 id="t-altar" class="display shadowed"><span class="sr-only">Nos casamos bajo el arco, a las 17:30.</span><span class="sh-copy" aria-hidden="true">Nos casamos bajo el arco, a las 17:30.</span><span class="sh-text" aria-hidden="true">Nos casamos bajo el arco, a las 17:30.</span></h2>
+            <p class="sub">A esa hora el sol entra de lado y alarga las sombras sobre la piedra.</p>
+          </div>
+          <div class="band b-quote fx-focus" data-range="0.68,0.795">
+            <blockquote class="quote">
+              <p><span class="sr-only">Seis años, dos ciudades y un olivo en el balcón. Ahora, este arco.</span><span class="q-soft" aria-hidden="true">Seis años, dos ciudades y un olivo en el balcón.<br><em>Ahora, este arco.</em></span><span class="q-sharp" aria-hidden="true">Seis años, dos ciudades y un olivo en el balcón.<br><em>Ahora, este arco.</em></span></p>
+            </blockquote>
+          </div>
+        </article>
+
+        <!-- Lámina IV -->
+        <article class="chapter" data-ch="3" aria-labelledby="t-velada">
+          <div class="chapter-bg" aria-hidden="true"></div>
+          <div class="band b-rsvp fx-rise" data-range="0.81,1" data-ramp="0.06" id="rsvp" data-interactive>
+            <p class="plate"><span>Lámina IV</span> · La velada · <em>Lux vespertina</em></p>
+            <h2 id="t-velada" class="display" data-split="words">Cuando caiga la luz, quédate.</h2>
+            <form class="glass rsvp" id="rsvp-form" novalidate>
+              <div class="rsvp-head">
+                <h3 class="card-t">Confirma tu asistencia</h3>
+                <p class="card-k">Antes del 1 de mayo de 2027</p>
+              </div>
+              <div class="fields">
+                <label class="f f-full"><span>Nombre y apellidos</span>
+                  <input name="nombre" autocomplete="name" required placeholder="Como aparece en tu invitación" aria-describedby="err-nombre"></label>
+                <p class="err" id="err-nombre" role="alert"></p>
+                <fieldset class="f f-full pills">
+                  <legend>¿Vienes?</legend>
+                  <label><input type="radio" name="asistencia" value="si" checked><span>Allí estaré</span></label>
+                  <label><input type="radio" name="asistencia" value="no"><span>No podré ir</span></label>
+                </fieldset>
+                <label class="f"><span>Acompañantes</span>
+                  <select name="acompanantes"><option value="0">Solo yo</option><option value="1">+1</option><option value="2">+2</option><option value="3">+3</option></select></label>
+                <label class="f"><span>Alergias o dieta</span>
+                  <input name="dieta" placeholder="Ninguna, vegetariana, sin gluten..."></label>
+                <label class="f f-full"><span>Una canción para la velada</span>
+                  <input name="cancion" placeholder="La que te hará bailar"></label>
+              </div>
+              <button class="btn btn-hold" type="submit" id="hold" aria-describedby="hold-hint">
+                <span class="hold-fill" aria-hidden="true"></span>
+                <span class="hold-candle" aria-hidden="true"><i class="wax"></i><i class="flame"></i></span>
+                <span class="hold-label">Mantén pulsado para encender tu vela</span>
+              </button>
+              <p class="hint" id="hold-hint">Mantén pulsado un par de segundos. Con teclado, pulsa Intro.</p>
+              <div class="rsvp-done" id="rsvp-done" role="status" aria-live="polite" tabindex="-1">
+                <span class="done-candle" aria-hidden="true"><i class="wax"></i><i class="flame"></i></span>
+                <h3 class="card-t" id="done-t"></h3>
+                <p id="done-p"></p>
+              </div>
+            </form>
+          </div>
+        </article>
+      </div>
+
+      <ol class="hud" aria-hidden="true">
+        <li class="on"><b>I</b><span>El umbral</span></li>
+        <li><b>II</b><span>La mesa</span></li>
+        <li><b>III</b><span>El altar</span></li>
+        <li><b>IV</b><span>La velada</span></li>
+        <i class="hud-line"><i></i></i>
+      </ol>
+      <div class="cue" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="2"/><circle class="ring-p" cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/></svg>
+        <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Desliza</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CUADERNO DE CAMPO ================= -->
+  <section class="dawn" aria-labelledby="t-cuaderno">
+    <div class="wrap rv">
+      <p class="kicker">Cuaderno de campo</p>
+      <h2 id="t-cuaderno" class="h-xl">Todo lo práctico, en un sitio.</h2>
+      <p class="lede">Cómo llegar, dónde dormir y lo que suelen preguntarnos.</p>
+      <svg class="sprig draw" viewBox="0 0 240 60" aria-hidden="true"><path pathLength="1" d="M4 40C60 38 110 30 236 18"/><path pathLength="1" d="M52 37c4-12 16-18 26-18-2 10-12 18-26 18zM96 32c2-12 14-20 24-20 0 10-10 19-24 20zM140 27c3-11 15-17 25-16-2 10-12 16-25 16zM70 37c8 6 20 8 30 4-8-7-20-8-30-4zM116 31c8 6 20 7 29 3-8-7-19-7-29-3zM160 26c8 5 19 6 28 2-8-6-19-6-28-2z"/></svg>
+    </div>
+  </section>
+
+  <section class="sec detalles" id="detalles" aria-labelledby="t-detalles">
+    <div class="wrap">
+      <header class="sec-head rv">
+        <p class="kicker">Nº 05 · De cerca</p>
+        <h2 id="t-detalles" class="h-lg">Lo hemos elegido todo a mano.</h2>
+        <p class="lede">La vajilla la hizo un pequeño taller de cerámica. Las servilletas las atamos nosotros, una a una, con hilo crudo.</p>
+      </header>
+      <div class="figs">
+        <figure class="fig rv" style="--d:0">
+          <div class="fig-frame" data-detail="0">
+            <svg class="sketch draw" viewBox="0 0 200 250" aria-hidden="true">
+              <path pathLength="1" d="M60 40h80c0 50-8 92-40 104-32-12-40-54-40-104z"/>
+              <path pathLength="1" d="M74 48c0 40 4 74 18 88M88 46c0 44 2 78 8 92M104 46c0 44-2 78-8 92M120 48c0 40-4 74-18 88"/>
+              <path pathLength="1" d="M100 144v60M70 212c10-6 50-6 60 0-10 6-50 6-60 0z"/>
+              <path pathLength="1" d="M20 226c50-6 110-6 160 0"/>
+              <path pathLength="1" d="M140 196c14-10 30-10 40-2-12 8-28 8-40 2z"/>
+            </svg>
+          </div>
+          <figcaption><span class="mono">Nº 1</span> Copa de cristal estriado</figcaption>
+        </figure>
+        <figure class="fig rv" style="--d:1">
+          <div class="fig-frame" data-detail="1">
+            <svg class="sketch draw" viewBox="0 0 200 250" aria-hidden="true">
+              <path pathLength="1" d="M100 50a75 75 0 1 0 .1 0z"/>
+              <path pathLength="1" d="M100 74a51 51 0 1 0 .1 0z"/>
+              <path pathLength="1" d="M60 102l80 50M58 146l84-46"/>
+              <path pathLength="1" d="M70 120c20 4 40 4 60 0M70 130c20-4 40-4 60 0"/>
+              <path pathLength="1" d="M128 82c10-14 24-18 34-12-8 10-22 14-34 12zM134 92c14-4 26 0 30 8-12 4-24 0-30-8z"/>
+            </svg>
+          </div>
+          <figcaption><span class="mono">Nº 2</span> Cerámica mate hecha a mano</figcaption>
+        </figure>
+        <figure class="fig rv" style="--d:2">
+          <div class="fig-frame" data-detail="2">
+            <svg class="sketch draw" viewBox="0 0 200 250" aria-hidden="true">
+              <path pathLength="1" d="M52 34l3 4-2 4 3 4-2 4 2 4-3 4 2 4-2 4 3 4-2 4 2 4-3 4 2 4-2 4 3 4-2 4 2 4-3 4 2 4-2 4 3 4-2 4 2 4-3 4 2 4-2 4 3 4-2 4 2 4-3 4 2 4-2 4 3 4-2 4 2 4-3 4 2 4h96V34z"/>
+              <path pathLength="1" d="M100 70c-6 30-4 60 6 92M100 70c-10 6-18 4-22-2 8-4 16-4 22 2zM101 92c10 4 18 2 22-4-8-4-16-3-22 4zM100 112c-10 4-18 2-22-4 8-4 16-3 22 4zM103 132c10 4 18 2 22-4-8-4-16-3-22 4z"/>
+              <path pathLength="1" d="M78 196h44M84 206h32"/>
+            </svg>
+          </div>
+          <figcaption><span class="mono">Nº 3</span> Menú en papel de algodón</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec lugar" id="lugar" aria-labelledby="t-lugar">
+    <div class="wrap lugar-grid">
+      <div class="lugar-text rv">
+        <p class="kicker">Nº 06 · El lugar</p>
+        <h2 id="t-lugar" class="h-lg">Finca El Olivar</h2>
+        <p class="lede">Un invernadero de hierro y cristal de 1890, rodeado de olivos centenarios, a diez minutos de Aranjuez.</p>
+        <address>Camino de los Olivos, km 3 · 28300 Aranjuez, Madrid</address>
+        <dl class="ways">
+          <div><dt>En coche</dt><dd>45 minutos desde Madrid por la A-4. Hay aparcamiento dentro de la finca.</dd></div>
+          <div><dt>En autobús</dt><dd>Sale a las 16:15 desde Plaza de España, en Madrid. Vuelve a las 00:30 y a las 03:00.</dd></div>
+          <div><dt>En tren</dt><dd>Cercanías C-3 hasta Aranjuez y diez minutos en taxi.</dd></div>
+        </dl>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Aranjuez%2C%20Madrid" target="_blank" rel="noopener">Abrir en el mapa</a>
+      </div>
+      <figure class="map rv" aria-label="Mapa de la ruta de Madrid a la Finca El Olivar">
+        <svg viewBox="0 0 520 560" role="img" aria-labelledby="map-t">
+          <title id="map-t">Ruta desde Madrid hasta Aranjuez y la Finca El Olivar</title>
+          <rect class="map-paper" x="6" y="6" width="508" height="548" rx="10"/>
+          <path class="map-river" d="M20 420c60-20 90 10 150-4s90-40 150-26 110 30 180 10"/>
+          <path class="map-river map-river-2" d="M20 432c60-20 90 10 150-4s90-40 150-26 110 30 180 10"/>
+          <path class="map-road" d="M150 78C170 160 200 220 236 290s50 110 84 150"/>
+          <path class="map-route" id="map-route" pathLength="1" d="M150 78C170 160 200 220 236 290s50 110 84 150c20 22 54 30 86 20"/>
+          <g class="map-olives">
+            <circle cx="380" cy="430" r="6"/><circle cx="398" cy="446" r="5"/><circle cx="420" cy="438" r="6"/><circle cx="436" cy="456" r="5"/><circle cx="412" cy="470" r="6"/><circle cx="444" cy="476" r="4"/><circle cx="392" cy="476" r="4"/>
+          </g>
+          <g class="map-pin" transform="translate(406 460)"><circle r="16"/><path d="M-6 4c4-8 8-12 14-16M-3 0c-4-2-6-6-4-10 4 2 6 6 4 10z"/></g>
+          <circle class="map-dot" cx="150" cy="78" r="6"/><circle class="map-dot" cx="320" cy="440" r="5"/>
+          <text x="166" y="72" class="map-l">MADRID</text>
+          <text x="250" y="470" class="map-l">ARANJUEZ</text>
+          <text x="340" y="510" class="map-l map-l-strong">FINCA EL OLIVAR</text>
+          <text x="40" y="408" class="map-l map-l-i">río Tajo</text>
+          <text x="214" y="196" class="map-l map-l-i">A-4 · 45 min</text>
+          <g class="map-rose" transform="translate(452 90)"><circle r="26"/><path d="M0-34V34M-34 0H34"/><path d="M0-22l5 22-5 22-5-22z"/><text y="-40" class="map-l">N</text></g>
+        </svg>
+        <figcaption class="mono">Lámina VI · Ruta al invernadero</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alojamiento" id="alojamiento" aria-labelledby="t-aloj">
+    <div class="wrap">
+      <header class="sec-head sec-head-row rv">
+        <div>
+          <p class="kicker">Nº 07 · Dónde dormir</p>
+          <h2 id="t-aloj" class="h-lg">Tres sitios cerca, con tarifa para invitados.</h2>
+        </div>
+        <p class="lede">Reserva antes del 1 de abril y di que vienes a la boda de Clara y Mateo.</p>
+      </header>
+      <div class="stays">
+        <article class="stay rv" style="--d:0">
+          <svg class="plate-ill draw" viewBox="0 0 160 200" aria-hidden="true">
+            <path pathLength="1" d="M80 190C78 140 82 80 80 14"/>
+            <g class="lv"><circle cx="64" cy="40" r="13"/><circle cx="96" cy="58" r="14"/><circle cx="62" cy="80" r="15"/><circle cx="98" cy="102" r="15"/><circle cx="62" cy="124" r="16"/><circle cx="98" cy="146" r="15"/><circle cx="64" cy="166" r="13"/></g>
+          </svg>
+          <p class="mono">Eucalyptus cinerea · a 8 minutos</p>
+          <h3>Hotel Jardín del Tajo</h3>
+          <p>Habitaciones con vistas al río y jardín para desayunar. Código BOTANICA27: un 10% menos.</p>
+        </article>
+        <article class="stay rv" style="--d:1">
+          <svg class="plate-ill draw" viewBox="0 0 160 200" aria-hidden="true">
+            <path pathLength="1" d="M40 190C70 140 100 80 128 14"/>
+            <g class="lv"><ellipse cx="62" cy="140" rx="6" ry="24" transform="rotate(-60 62 140)"/><ellipse cx="74" cy="118" rx="6" ry="24" transform="rotate(30 74 118)"/><ellipse cx="88" cy="96" rx="6" ry="22" transform="rotate(-62 88 96)"/><ellipse cx="98" cy="74" rx="6" ry="22" transform="rotate(28 98 74)"/><ellipse cx="112" cy="52" rx="5" ry="20" transform="rotate(-64 112 52)"/><circle cx="104" cy="120" r="6"/><circle cx="114" cy="128" r="5"/></g>
+          </svg>
+          <p class="mono">Olea europaea · a 12 minutos</p>
+          <h3>Casa Palacio de la Reina</h3>
+          <p>Una casa del siglo XVIII en el centro de Aranjuez. Desayuno incluido y patio con naranjos.</p>
+        </article>
+        <article class="stay rv" style="--d:2">
+          <svg class="plate-ill draw" viewBox="0 0 160 200" aria-hidden="true">
+            <path pathLength="1" d="M80 190C76 150 84 110 80 78"/>
+            <path pathLength="1" d="M80 40c-22 0-34 16-30 32 6 18 54 18 60 0 4-16-8-32-30-32zM80 48c-10 0-16 8-12 16 6 8 18 8 24 0 4-8-2-16-12-16zM58 54c-6 10-4 22 4 28M102 54c6 10 4 22-4 28"/>
+            <g class="lv"><ellipse cx="62" cy="130" rx="9" ry="16" transform="rotate(-50 62 130)"/><ellipse cx="98" cy="150" rx="9" ry="16" transform="rotate(50 98 150)"/></g>
+          </svg>
+          <p class="mono">Rosa 'Café au lait' · a 15 minutos</p>
+          <h3>Posada Las Huertas</h3>
+          <p>Pequeña, tranquila y con piscina. La mejor opción si vienes con niños.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec regalo" id="regalos" aria-labelledby="t-regalo">
+    <svg class="petal" viewBox="0 0 60 80" aria-hidden="true"><path d="M30 4C52 18 58 46 44 66 36 76 24 76 16 66 2 46 8 18 30 4z"/><path d="M30 10c0 22-2 44-8 60" fill="none"/></svg>
+    <div class="wrap narrow rv">
+      <p class="kicker">Nº 08 · Un detalle</p>
+      <h2 id="t-regalo" class="h-quote">Lo que más nos importa es que vengas.</h2>
+      <p class="lede">Si además quieres tener un detalle con nosotros, este es nuestro número de cuenta.</p>
+      <div class="iban">
+        <code id="iban">ES00 0000 0000 0000 0000 0000</code>
+        <button class="btn btn-ghost btn-sm" type="button" id="copy-iban"><span>Copiar</span></button>
+      </div>
+      <p class="tiny" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="sec faq" id="preguntas" aria-labelledby="t-faq">
+    <div class="wrap faq-grid">
+      <header class="faq-head rv">
+        <p class="kicker">Nº 09 · Preguntas</p>
+        <h2 id="t-faq" class="h-lg">Lo que suelen preguntarnos.</h2>
+        <p class="lede">Si te queda alguna duda, escríbenos. Contestamos rápido.</p>
+      </header>
+      <div class="faq-list rv">
+        <details><summary>¿Puedo llevar tacones?</summary><p>Sí, mejor de tacón ancho. El sendero y el altar son de piedra antigua y el tacón fino se queda entre las juntas.</p></details>
+        <details><summary>¿Qué pasa si llueve?</summary><p>Nada. La ceremonia se traslada al invernadero, que es de cristal, así que la lluvia también tiene su encanto.</p></details>
+        <details><summary>¿Pueden venir niños?</summary><p>Claro. Habrá una zona de juegos con monitores durante la cena. Dinos cuántos vienen al confirmar.</p></details>
+        <details><summary>¿Hace frío por la noche?</summary><p>En junio el campo refresca después de las once. Trae una chaqueta o un chal para la velada.</p></details>
+        <details><summary>¿Se pueden hacer fotos en la ceremonia?</summary><p>Te pedimos que no. Será una ceremonia sin móviles y nuestra fotógrafa compartirá todas las fotos contigo.</p></details>
+        <details><summary>¿Hasta cuándo puedo confirmar?</summary><p>Hasta el 1 de mayo de 2027. Así podemos cerrar mesas y menús con tiempo.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" id="confirmar" aria-labelledby="t-cierre">
+    <div class="closing-bg" aria-hidden="true"></div>
+    <div class="wrap narrow rv">
+      <p class="count" id="count" aria-live="off"><span class="count-n" id="count-n">245</span><span class="count-t">días para encender las velas</span></p>
+      <h2 id="t-cierre" class="h-xl">Te guardamos un sitio en la mesa.</h2>
+      <a class="btn btn-lg" href="#rsvp" data-rsvp-link>Confirmar asistencia</a>
+      <p class="tiny">Antes del 1 de mayo de 2027.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <p class="foot-names">Clara <span>&amp;</span> Mateo</p>
+    <p>19 de junio de 2027 · Finca El Olivar, Aranjuez</p>
+    <p class="mono">#ClaraYMateo2027</p>
+    <p class="tiny">Plantilla The Botanical Sanctuary de Innomia. Nombres, lugar e imágenes son de ejemplo.</p>
+  </div>
+</footer>
+
+<script src="assets/js/sanctuary.js" defer></script>
+</body>
+</html>
